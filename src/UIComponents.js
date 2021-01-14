@@ -82,19 +82,21 @@ const Label = Styled(Animated.Text)`
 
 const Dot = Styled(Animated.View)`
 	position: absolute;
-	top: ${(p) => p.topPadding};
+	top: ${(p) => (p.innerDot ? p.width * 0.15 : -p.width * 0.25)};
+	left: ${(p) => (p.innerDot ? p.width * 0.15 : -p.width * 0.25)};
 	width: ${(p) => p.width};
-	height: ${(p) => p.height};
+	height: ${(p) => p.width};
 	border-radius: ${(p) => p.dotCornerRadius};
-	background-color: ${(p) => p.activeTabBackground};
-	z-index: -1;
+	background-color: ${(p) => (p.innerDot ? "#DFE3E9" : "white")};
+  z-index: -1;
+  ${(p) => p.shadow && SHADOW};
 `;
 
 const SHADOW = css`
   shadow-color: #000000;
   shadow-offset: 0px 5px;
-  shadow-opacity: 0.05;
-  elevation: 1;
+  shadow-opacity: 0.25;
+  elevation: 16;
   shadow-radius: 20;
 `;
 

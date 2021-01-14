@@ -411,22 +411,13 @@ export default function TabBarElement({
       </View>
       {/* Tab Bar */}
       {tabBarVisible && (
-        <View pointerEvents={"box-none"} style={floating && overlayStyle}>
-          <BottomTabBarWrapper
-            floating={floating}
-            style={tabStyle}
-            topPadding={topPadding}
-            bottomPadding={bottomPadding}
-            horizontalPadding={horizontalPadding}
-            tabBarBackground={tabBarBackground}
-            shadow={shadow && SHADOW}
-          >
-            {state.routes.map(createTab)}
-            {/* Animated Dot / Background */}
+        <>
+          <View pointerEvents={"box-none"} style={floating && overlayStyle}>
             <Dot
               dotCornerRadius={dotCornerRadius}
               topPadding={topPadding}
               activeTabBackground={activeTabBackground}
+              shadow={shadow && SHADOW}
               style={{
                 left: animatedPos.interpolate({
                   inputRange: [0, 1],
@@ -436,8 +427,42 @@ export default function TabBarElement({
               width={width}
               height={height}
             />
-          </BottomTabBarWrapper>
-        </View>
+            <BottomTabBarWrapper
+              floating={floating}
+              style={tabStyle}
+              topPadding={topPadding}
+              bottomPadding={bottomPadding}
+              horizontalPadding={horizontalPadding}
+              tabBarBackground={tabBarBackground}
+              shadow={shadow && SHADOW}
+            >
+              {state.routes.map(createTab)}
+              {/* Animated Dot / Background */}
+              <Dot
+                dotCornerRadius={dotCornerRadius}
+                topPadding={topPadding}
+                activeTabBackground={activeTabBackground}
+                style={{
+                  left: animatedPos.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [prevPos, pos],
+                  }),
+                }}
+                width={width}
+                height={height}
+              >
+                <Dot
+                  dotCornerRadius={dotCornerRadius}
+                  topPadding={topPadding}
+                  activeTabBackground={"#DFE3E9"}
+                  width={width * 0.75}
+                  height={height}
+                  innerDot={true}
+                />
+              </Dot>
+            </BottomTabBarWrapper>
+          </View>
+        </>
       )}
     </React.Fragment>
   );

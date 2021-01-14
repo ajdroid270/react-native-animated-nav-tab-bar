@@ -23,7 +23,7 @@ const defaultAppearence = {
 const defaultTabBarOptions = {
   activeTintColor: "black",
   inactiveTintColor: "black",
-  activeBackgroundColor: "#FFCF64",
+  activeBackgroundColor: "#DFE3E9",
   labelStyle: {
     fontWeight: "bold",
   },
